@@ -68,7 +68,7 @@ class abc {
                 }
             }
         }
-        System.out.println("Details of the Highest Paid Manager");
+        System.out.println("Details of the Highest Paid Purchase Manager");
         System.out.println("Employee ID: " + arr[flag].ID);
         System.out.println("Employee name: " + arr[flag].Ename);
         System.out.println("Employee department: " + arr[flag].Dname);
