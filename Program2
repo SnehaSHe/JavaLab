@@ -37,7 +37,7 @@ class abc {
         System.out.println();
         System.out.println("---------------------DETAILS OF ALL THE EMPLOYEES---------------------");
         for (int i = 0; i < n; i++) {
-            System.out.println("Employee number " + i + 1);
+            System.out.println("Employee number " + (i + 1));
             System.out.println("Employee ID: " + arr[i].ID);
             System.out.println("Employee name: " + arr[i].Ename);
             System.out.println("Employee department: " + arr[i].Dname);
