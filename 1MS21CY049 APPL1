@@ -1,0 +1,77 @@
+Java Application Development Session 1
+Program 1
+JDBC and sql connection
+
+USN: 1MS21CY049
+Name: Sneha Shenoy
+
+Source Code:
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class blank {
+
+    public static void main(String[] args) {
+        // Replace these with your database details
+        String jdbcUrl = "jdbc:mysql://localhost:3306/a";
+        String username = "root";
+        String password = "root";
+
+        try {
+            // Establishing the database connection
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            // Retrieving student details
+            String query = "SELECT * FROM stud";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Displaying student details
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String usn = resultSet.getString("usn");
+                int sem = resultSet.getInt("sem");
+                int age = resultSet.getInt("age");
+                String course = resultSet.getString("course");
+                String dob = resultSet.getString("dob");
+                String address = resultSet.getString("address");
+
+                System.out.println("Name: " + name + ", USN: " + usn + ", Semester: " + sem +
+                        ", Age: " + age + ", Course: " + course + ", DOB: " + dob + ", Address: " + address);
+            }
+
+            // Closing resources
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+SQL CODE:
+ create table stud
+    -> (
+    -> name varchar(25),
+    -> usn varchar(25),
+    -> sem numeric,
+    -> age numeric,
+    -> course varchar(25),
+    -> dob varchar(25),
+    -> address varchar(25)
+    -> );
+
+insert into stud values("Sneha", "1MS21CY049", 4, 21, "MCA", "12-12-2002","ABC");
+insert into stud values("XYZ", "1MS21CY089", 5, 20, "BE", "12-12-2003","Ade");
+
+
+
+OUTPUT:
+Name: Sneha, USN: 1MS21CY049, Semester: 4, Age: 21, Course: MCA, DOB: 12-12-2002, Address: ABC
+Name: XYZ, USN: 1MS21CY089, Semester: 5, Age: 20, Course: BE, DOB: 12-12-2003, Address: Ade
+
